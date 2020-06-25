@@ -7,7 +7,7 @@
 html, body {
   height: 100%;
   padding-top: 10px;
-  background: linear-gradient(to bottom right,#024,#402);
+  background: linear-gradient(to bottom right,rgb(178, 209, 240),rgb(240, 145, 192));
 }
 
 .container{
@@ -18,7 +18,7 @@ html, body {
 .container .form{
   align-items: center;
   text-align: center;
-  margin: 100px 0 0 400px;
+  margin: 10px 0 0 400px;
   width: 300px;
 }
 

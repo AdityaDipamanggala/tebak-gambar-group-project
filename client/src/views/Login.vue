@@ -1,8 +1,9 @@
 <template>
     <div class="container">
         <div class="title">
-            <h2>Welcome to Guess The Word Game !</h2>
+            <h2>Welcome to <strong>Guess The Word</strong> Game !</h2>
         </div>
+        <img class="image" src="https://media0.giphy.com/media/SsIZQ5my0eba5y3r2m/giphy.gif" />
         <div class="form">
             <form @submit.prevent="inputNick">
                 <div class="form-group">
@@ -15,7 +16,7 @@
                         v-model="nick"
                     />
                 </div>
-                <button type="submit">Submit</button>
+                <button type="submit" class="btn btn-primary">Submit</button>
             </form>
         </div>
     </div>
@@ -41,4 +42,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.image {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+</style>
