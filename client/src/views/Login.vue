@@ -1,18 +1,23 @@
 <template>
     <div class="container">
-        <form @submit.prevent="inputNick">
-            <div class="form-group">
-                <label for="nick">Please insert your nick name !</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="nick"
-                    placeholder="Nickname"
-                    v-model="nick"
-                />
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="title">
+            <h2>Welcome to Guess The Word Game !</h2>
+        </div>
+        <div class="form">
+            <form @submit.prevent="inputNick">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Please insert your nick name !</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder="Your nick name"
+                        v-model="nick"
+                    />
+                </div>
+                <button type="submit">Submit</button>
+            </form>
+        </div>
     </div>
 </template>
 

@@ -4,6 +4,12 @@
   font-family: "Slabo 27px";
 }
 
+html, body {
+  height: 100%;
+  padding-top: 10px;
+  background: linear-gradient(to bottom right,#024,#402);
+}
+
 .container{
   align-items: center;
   text-align: center;

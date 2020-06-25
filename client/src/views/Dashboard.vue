@@ -2,9 +2,7 @@
     <div class="container">
         <h1>Coba tebak gambar!</h1>
         <h1>Point: {{ point }}</h1>
-        <div>
             <img :src="image" />
-        </div>
         <form @submit.prevent="postAnswer">
             <div class="form-group">
                 <input
@@ -34,7 +32,7 @@ export default {
     },
     methods: {
         postAnswer() {
-            this.$store.dispatch('postAnswer')
+            this.$store.dispatch('postAnswer');
         }
     },
     created() {
@@ -57,4 +55,11 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+img {
+    border: 2px white solid;
+    align-items: center;
+    width: 145px;
+    height: 145px;
+}
+</style>
