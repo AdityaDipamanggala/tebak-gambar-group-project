@@ -6,18 +6,8 @@ const socket = io('http://localhost:3000');
 Vue.use(Vuex);
 
 export default new Vuex.Store({
-    state: {
-        image: '',
-        id: new Date().getTime(),
-        nick: '',
-        point: 0,
-        answer: ''
-    },
+    state: {},
     mutations: {},
-    actions: {
-        postAnswer(context, payload) {
-            socket.emit('answer', { id: context.state.id, answer: contex.state.answer });
-        }
-    },
+    actions: {},
     modules: {}
 });
