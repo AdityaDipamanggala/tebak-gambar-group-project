@@ -3,7 +3,7 @@ const app = express();
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
 
-const db = require('./db.json');
+const db = require('./data.json');
 
 const getRandom = () => {
     return db[Math.floor(Math.random() * db.length)];
@@ -16,7 +16,7 @@ io.on('connection', (socket) => {
 
     socket.on('answer', (data) => {
         data.answer = data.answer.toString();
-        if ('true' === data.answer.trim().toLowerCase()) {
+        if (current.answer === data.answer.trim().toLowerCase()) {
             current = getRandom();
             io.emit('question', current.image);
             io.emit(data.id, true);
