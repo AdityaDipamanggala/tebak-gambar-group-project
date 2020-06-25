@@ -1,0 +1,22 @@
+* {
+  padding: 0;
+  margin: 0;
+  font-family: "Slabo 27px";
+}
+
+.container{
+  align-items: center;
+  text-align: center;
+}
+
+.container .form{
+  align-items: center;
+  text-align: center;
+  margin: 100px 0 0 400px;
+  width: 300px;
+}
+
+.container .title{
+  text-align: center;
+  margin-top: 100px;
+}
