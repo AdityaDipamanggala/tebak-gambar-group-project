@@ -12,7 +12,7 @@
                     class="form-control"
                     id="answer"
                     placeholder="Type your answer here"
-                    v-model="store"
+                    v-model="$store.state.answer"
                 />
             </div>
             <button type="submit">Submit</button>
@@ -34,8 +34,7 @@ export default {
     },
     methods: {
         postAnswer() {
-            socket.emit('answer', { id: localStorage.id, answer: this.answer });
-            this.answer = '';
+            this.$store.dispatch('postAnswer')
         }
     },
     created() {
