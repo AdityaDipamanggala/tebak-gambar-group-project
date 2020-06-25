@@ -10,8 +10,11 @@ const getRandom = () => {
 };
 
 let current = getRandom();
+let connected = 0;
 
 io.on('connection', (socket) => {
+    connected++;
+    console.log(`${connected} users connected`);
     io.emit('question', current.image);
 
     socket.on('answer', (data) => {
