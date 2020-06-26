@@ -1,28 +1,39 @@
 * {
-  padding: 0;
-  margin: 0;
-  font-family: "Slabo 27px";
+    padding: 0;
+    margin: 0;
+    font-family: "Slabo 27px";
 }
 
-html, body {
-  height: 100%;
-  padding-top: 10px;
-  background: linear-gradient(to bottom right,rgb(178, 209, 240),rgb(240, 145, 192));
+html,
+body {
+    height: 100%;
+    padding-top: 10px;
+    background: linear-gradient(to bottom right, rgb(178, 209, 240), rgb(240, 145, 192));
 }
 
-.container{
-  align-items: center;
-  text-align: center;
+.container {
+    align-items: center;
+    text-align: center;
 }
 
-.container .form{
-  align-items: center;
-  text-align: center;
-  /* margin: 10px 0 0 400px; */
-  /* width: 300px; */
+.container .form {
+    align-items: center;
+    text-align: center;
+    /* margin: 10px 0 0 400px; */
+    /* width: 300px; */
 }
 
-.container .title{
-  text-align: center;
-  margin-top: 100px;
+.container .title {
+    text-align: center;
+    margin-top: 100px;
+}
+
+.footer {
+    position: fixed;
+    left: 0;
+    bottom: 0;
+    width: 100%;
+    background-color: rgba(221, 20, 221, 0.5);
+    color: white;
+    text-align: center;
 }

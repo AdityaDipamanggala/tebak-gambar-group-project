@@ -1,5 +1,8 @@
 <template>
     <div class="container">
+     <audio autoplay controls>
+        <source src="musicSaja.mp3"  type="audio/mpeg">
+      </audio>
         <div class="title">
             <h2>Welcome to <strong>Guess The Word</strong> Game !</h2>
         </div>
