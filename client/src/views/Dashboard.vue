@@ -9,6 +9,11 @@
         <div class="container mt-5">
             <h1>Let's guess the picture !</h1>
             <h1>Point: {{ point }}</h1>
+            <center>
+                <div class="alert alert-primary" role="alert" v-if="alert">
+                    <strong>Well done!</strong> {{ alert }}
+                </div>
+            </center>
             <img class="image my-3" :src="$store.state.image" />
             <center>
                 <form @submit.prevent="$store.dispatch('postAnswer')">
@@ -35,7 +40,8 @@ export default {
     name: 'Dashboard',
     data: () => {
         return {
-            point: 0
+            point: 0,
+            alert: ''
         };
     },
     methods: {
@@ -58,7 +64,7 @@ export default {
                 localStorage.point = this.point;
                 this.$store.dispatch(
                     'broadcast',
-                    `User ${localStorage.nick} berhasil menjawab pertanyaan!`
+                    `User ${localStorage.nick} successfully answer the question!`
                 );
             } else {
                 this.point--;
@@ -73,6 +79,10 @@ export default {
 
         socket.on('broadcast', message => {
             console.log(message); // ini ditampilkan ke notif
+            this.alert = message;
+            setTimeout(() => {
+                this.alert = '';
+            }, 2000);
         });
     }
 };
@@ -92,5 +102,10 @@ form {
     border: 2px white solid;
     align-items: center;
     border-radius: 10px;
+}
+
+.alert {
+    text-align: center;
+    width: 50%;
 }
 </style>
