@@ -33,7 +33,17 @@
 
 <script>
 export default {
+<<<<<<< HEAD
     name: 'Navbar'
+=======
+    name: 'Navbar',
+    methods: {
+        logout() {
+            localStorage.clear();
+            this.$router.push('/login');
+        }
+    }
+>>>>>>> development
 };
 </script>
 

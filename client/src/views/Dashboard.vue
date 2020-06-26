@@ -1,5 +1,6 @@
 <template>
     <div>
+        <Navbar></Navbar>
         <div class="container">
             <h1 class="marginatas">Let's guess the picture !</h1>
             <h1>Point: {{ point }}</h1>
@@ -18,6 +19,7 @@
                             type="text"
                             class="form-control"
                             id="answer"
+                            autocomplete="off"
                             placeholder="Type your answer here"
                             v-model="$store.state.answer"
                         />
@@ -39,9 +41,13 @@
 
 <script>
 import socket from '../config/socket';
+import Navbar from '../components/Navbar.vue';
 
 export default {
     name: 'Dashboard',
+    components: {
+        Navbar
+    },
     data: () => {
         return {
             point: 0,
@@ -129,22 +135,6 @@ form {
     background: gray;
     border: black;
 }
-
-/* .dropdown {
-    right: -700px;
-} */
-
-/* .dropdown-menu {
-    padding: 0;
-} */
-
-/* .table-contain {
-    width: 160px;
-}
-
-.caret {
-    background: black;
-} */
 
 .alert {
     text-align: center;
