@@ -69,7 +69,7 @@
                 <li>Tebaklah maksud dari gambar di atas</li>
                 <li>Input jawaban pada input yang disediakan, kemudian submit.</li>
                 <li>Jika jawaban yang diinput benar, point +10.</li>
-                <li>Jika jawaban yang diinput salah, point -10.</li>
+                <li>Jika jawaban yang diinput salah, point -1.</li>
                 <li>Kamu dapat melihat point tertinggi pada menu Leaderboard</li>
             </ol>
         </div>
@@ -104,14 +104,15 @@ export default {
         }
     },
     created() {
-        let sound = new Audio('correct.mp3')
         this.point = parseInt(localStorage.point);
         socket.on('question', image => {
             this.$store.commit('setImage', image);
         });
         socket.on(localStorage.id, isCorrect => {
             if (isCorrect) {
-                sound.play()
+                let sound = new Audio('correct.mp3');
+                sound.volume = 0.5;
+                sound.play();
                 this.point += 10;
                 localStorage.point = this.point;
                 this.setAlert('Jawabanmu benar! Point +10');
@@ -141,7 +142,6 @@ export default {
 
         socket.on('getLeaderboard', data => {
             this.leaderData = data;
-            console.log(data); // ini ditampilkan ke leaderboard
         });
     }
 };

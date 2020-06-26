@@ -1,8 +1,5 @@
 <template>
     <div class="container">
-     <audio autoplay controls>
-        <source src="musicSaja.mp3"  type="audio/mpeg">
-      </audio>
         <div class="title">
             <h2>Welcome to <strong>Guess The Word</strong> Game !</h2>
         </div>
@@ -24,6 +21,9 @@
                 </form>
             </div>
         </div>
+        <!-- <audio autoplay controls class="mt-5">
+            <source src="musicSaja.mp3" type="audio/mpeg" />
+        </audio> -->
     </div>
 </template>
 
@@ -43,6 +43,11 @@ export default {
             localStorage.point = 0;
             this.$router.push('/');
         }
+    },
+    mounted() {
+        const sound = new Audio('musicSaja.mp3');
+        sound.volume = 0.5;
+        sound.play();
     }
 };
 </script>
