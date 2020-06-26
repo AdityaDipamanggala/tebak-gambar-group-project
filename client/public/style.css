@@ -19,8 +19,8 @@ body {
 .container .form {
     align-items: center;
     text-align: center;
-    margin: 10px 0 0 400px;
-    width: 300px;
+    /* margin: 10px 0 0 400px; */
+    /* width: 300px; */
 }
 
 .container .title {
