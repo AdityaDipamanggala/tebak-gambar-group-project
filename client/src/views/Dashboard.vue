@@ -3,16 +3,22 @@
         <nav class="navbar navbar-light bg-transparent justify-content-between fixed-top">
             <a class="navbar-brand" style="color: brown;"><strong>Guess The Word Game</strong></a>
             <div class="dropdown">
-                <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Leaderboard
-                <span class="caret"></span></button>
-                <table id="drop-down" class="dropdown-menu" border=2>	
+                <button
+                    class="btn btn-primary dropdown-toggle"
+                    id="menu1"
+                    type="button"
+                    data-toggle="dropdown"
+                >
+                    Leaderboard <span class="caret"></span>
+                </button>
+                <table id="drop-down" class="dropdown-menu" border="2">
                     <tr class="table-contain">
                         <th>Player Nickname</th>
                         <th>Point</th>
                     </tr>
-                    <tr v-for="(data, id) in this.leaderData" :key="id" class="table-contain"> 
-                        <td>{{data.nick}}</td>
-                        <td>{{data.point}}</td>
+                    <tr v-for="(data, id) in this.leaderData" :key="id" class="table-contain">
+                        <td>{{ data.nick }}</td>
+                        <td>{{ data.point }}</td>
                     </tr>
                 </table>
             </div>
@@ -23,6 +29,11 @@
         <div class="container mt-5">
             <h1>Let's guess the picture !</h1>
             <h1>Point: {{ point }}</h1>
+            <center>
+                <div class="alert alert-primary" role="alert" v-if="alert">
+                    <strong>Well done!</strong> {{ alert }}
+                </div>
+            </center>
             <img class="image my-3" :src="$store.state.image" />
             <center>
                 <form @submit.prevent="$store.dispatch('postAnswer')">
@@ -51,6 +62,7 @@ export default {
         return {
             point: 0,
             leaderData: [],
+            alert: ''
         };
     },
     methods: {
@@ -73,7 +85,7 @@ export default {
                 localStorage.point = this.point;
                 this.$store.dispatch(
                     'broadcast',
-                    `User ${localStorage.nick} berhasil menjawab pertanyaan!`
+                    `User ${localStorage.nick} successfully answer the question!`
                 );
             } else {
                 this.point--;
@@ -88,6 +100,10 @@ export default {
 
         socket.on('broadcast', message => {
             console.log(message); // ini ditampilkan ke notif
+            this.alert = message;
+            setTimeout(() => {
+                this.alert = '';
+            }, 2000);
         });
 
         setInterval(() => {
@@ -117,24 +133,29 @@ form {
     align-items: center;
     border-radius: 10px;
 }
-#menu1{
+#menu1 {
     background: gray;
     border: black;
 }
 
-.dropdown{
+.dropdown {
     right: -700px;
 }
 
-.dropdown-menu{
+.dropdown-menu {
     padding: 0;
 }
 
-.table-contain{
+.table-contain {
     width: 160px;
 }
 
-.caret{
+.caret {
     background: black;
+}
+
+.alert {
+    text-align: center;
+    width: 50%;
 }
 </style>
