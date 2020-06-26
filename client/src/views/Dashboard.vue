@@ -2,20 +2,16 @@
     <div>
         <nav class="navbar navbar-light bg-transparent justify-content-between fixed-top">
             <a class="navbar-brand" style="color: brown;"><strong>Guess The Word Game</strong></a>
-            <button
-                class="btn btn-danger my-0 my-sm-0"
-                type="button"
-                @click.prevent="logout"
-            >
+            <button class="btn btn-danger my-0 my-sm-0" type="button" @click.prevent="logout">
                 Logout
             </button>
         </nav>
         <div class="container mt-5">
             <h1>Let's guess the picture !</h1>
             <h1>Point: {{ point }}</h1>
-            <img class="image my-3" :src="image" />
+            <img class="image my-3" :src="$store.state.image" />
             <center>
-                <form @submit.prevent="postAnswer">
+                <form @submit.prevent="$store.dispatch('postAnswer')">
                     <div class="form-group">
                         <input
                             type="text"
@@ -33,14 +29,12 @@
 </template>
 
 <script>
-import io from 'socket.io-client';
-const socket = io('https://hacktivguessword.herokuapp.com');
+import socket from '../config/socket';
+
 export default {
     name: 'Dashboard',
     data: () => {
         return {
-            image: '',
-            answer: '',
             point: 0
         };
     },
@@ -56,18 +50,29 @@ export default {
     created() {
         this.point = parseInt(localStorage.point);
         socket.on('question', image => {
-            console.log(image);
-            this.image = image;
+            this.$store.commit('setImage', image);
         });
         socket.on(localStorage.id, isCorrect => {
-            console.log(isCorrect);
             if (isCorrect) {
                 this.point += 10;
                 localStorage.point = this.point;
+                this.$store.dispatch(
+                    'broadcast',
+                    `User ${localStorage.nick} berhasil menjawab pertanyaan!`
+                );
             } else {
                 this.point--;
                 localStorage.point = this.point;
             }
+        });
+
+        socket.on(localStorage.id + 'getimage', image => {
+            this.$store.commit('setImage', image);
+        });
+        socket.emit('getQuestion', localStorage.id + 'getimage');
+
+        socket.on('broadcast', message => {
+            console.log(message); // ini ditampilkan ke notif
         });
     }
 };

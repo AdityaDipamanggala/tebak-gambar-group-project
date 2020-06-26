@@ -19,7 +19,12 @@ let connected = 0;
 io.on('connection', (socket) => {
     connected++;
     console.log(`${connected} users connected`);
+
     io.emit('question', current.image);
+
+    socket.on('getQuestion', (tunnel) => {
+        io.emit(tunnel, current.image);
+    });
 
     socket.on('answer', (data) => {
         data.answer = data.answer.toString();
@@ -30,6 +35,15 @@ io.on('connection', (socket) => {
         } else {
             io.emit(data.id, false);
         }
+    });
+
+    socket.on('ngebroadcast', (message) => {
+        socket.broadcast.emit('broadcast', message);
+    });
+
+    socket.on('disconnect', () => {
+        connected--;
+        console.log(`A user disconnect ${connected}`);
     });
 });
 

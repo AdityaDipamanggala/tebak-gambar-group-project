@@ -1,25 +1,30 @@
 import Vue from 'vue';
 import Vuex from 'vuex';
 
+import socket from '../config/socket';
+
 Vue.use(Vuex);
 
 export default new Vuex.Store({
     state: {
         image: '',
-        id: new Date().getTime(),
-        answer: '',
-        point: 0,
-        nick: '',
+        answer: ''
     },
     mutations: {
-        getAnswer(state, answer) {
-            state.answer = answer
+        setAnswer(state, answer) {
+            state.answer = answer;
+        },
+        setImage(state, image) {
+            state.image = image;
         }
     },
     actions: {
-        postAnswer(context){
+        postAnswer(context) {
             socket.emit('answer', { id: localStorage.id, answer: context.state.answer });
-            context.commit('getAnswer', '')
+            context.commit('setAnswer', '');
+        },
+        broadcast(context, message) {
+            socket.emit('ngebroadcast', message);
         }
     },
     modules: {}
