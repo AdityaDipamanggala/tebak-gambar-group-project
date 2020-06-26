@@ -2,6 +2,20 @@
     <div>
         <nav class="navbar navbar-light bg-transparent justify-content-between fixed-top">
             <a class="navbar-brand" style="color: brown;"><strong>Guess The Word Game</strong></a>
+            <div class="dropdown">
+                <button class="btn btn-primary dropdown-toggle" id="menu1" type="button" data-toggle="dropdown">Leaderboard
+                <span class="caret"></span></button>
+                <table id="drop-down" class="dropdown-menu" border=2>	
+                    <tr class="table-contain">
+                        <th>Player Nickname</th>
+                        <th>Point</th>
+                    </tr>
+                    <tr v-for="(data, id) in this.leaderData" :key="id" class="table-contain"> 
+                        <td>{{data.nick}}</td>
+                        <td>{{data.point}}</td>
+                    </tr>
+                </table>
+            </div>
             <button class="btn btn-danger my-0 my-sm-0" type="button" @click.prevent="logout">
                 Logout
             </button>
@@ -35,7 +49,8 @@ export default {
     name: 'Dashboard',
     data: () => {
         return {
-            point: 0
+            point: 0,
+            leaderData: [],
         };
     },
     methods: {
@@ -80,6 +95,7 @@ export default {
         }, 3000);
 
         socket.on('getLeaderboard', data => {
+            this.leaderData = data
             console.log(data); // ini ditampilkan ke leaderboard
         });
     }
@@ -100,5 +116,25 @@ form {
     border: 2px white solid;
     align-items: center;
     border-radius: 10px;
+}
+#menu1{
+    background: gray;
+    border: black;
+}
+
+.dropdown{
+    right: -700px;
+}
+
+.dropdown-menu{
+    padding: 0;
+}
+
+.table-contain{
+    width: 160px;
+}
+
+.caret{
+    background: black;
 }
 </style>
