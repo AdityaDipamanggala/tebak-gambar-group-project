@@ -104,12 +104,14 @@ export default {
         }
     },
     created() {
+        let sound = new Audio('correct.mp3')
         this.point = parseInt(localStorage.point);
         socket.on('question', image => {
             this.$store.commit('setImage', image);
         });
         socket.on(localStorage.id, isCorrect => {
             if (isCorrect) {
+                sound.play()
                 this.point += 10;
                 localStorage.point = this.point;
                 this.setAlert('Jawabanmu benar! Point +10');
