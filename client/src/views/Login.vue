@@ -43,11 +43,6 @@ export default {
             localStorage.point = 0;
             this.$router.push('/');
         }
-    },
-    mounted() {
-        const sound = new Audio('musicSaja.mp3');
-        sound.volume = 0.5;
-        sound.play();
     }
 };
 </script>

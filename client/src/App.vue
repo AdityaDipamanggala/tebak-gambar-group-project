@@ -9,7 +9,12 @@
 
 <script>
 export default {
-    name: 'App'
+    name: 'App',
+    mounted() {
+        const sound = new Audio('musicSaja.mp3');
+        sound.volume = 0.5;
+        sound.play();
+    }
 };
 </script>
 
