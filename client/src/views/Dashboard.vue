@@ -74,6 +74,14 @@ export default {
         socket.on('broadcast', message => {
             console.log(message); // ini ditampilkan ke notif
         });
+
+        setInterval(() => {
+            socket.emit('uploadPoint', { nick: localStorage.nick, point: localStorage.point });
+        }, 3000);
+
+        socket.on('getLeaderboard', data => {
+            console.log(data); // ini ditampilkan ke leaderboard
+        });
     }
 };
 </script>
