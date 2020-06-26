@@ -52,6 +52,7 @@
                             type="text"
                             class="form-control"
                             id="answer"
+                            autocomplete="off"
                             placeholder="Type your answer here"
                             v-model="$store.state.answer"
                         />
