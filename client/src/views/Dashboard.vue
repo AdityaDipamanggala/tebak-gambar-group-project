@@ -3,7 +3,7 @@
         <div class="container">
             <nav class="navbar navbar-light bg-transparent justify-content-between fixed-top">
                 <!-- <div class="container ml-5 mr-5"> -->
-                <a class="navbar-brand" style="color: brown;"
+                <a class="navbar-brand ml-5" style="color: brown;"
                     ><strong>Guess The Word Game</strong></a
                 >
                 <div class="dropdown posisi">
@@ -24,7 +24,11 @@
                         </tbody>
                     </table>
                 </div>
-                <button class="btn btn-danger my-0 my-sm-0" type="button" @click.prevent="logout">
+                <button
+                    class="btn btn-danger my-0 my-sm-0 mr-5"
+                    type="button"
+                    @click.prevent="logout"
+                >
                     Logout
                 </button>
                 <!-- </div> -->
@@ -58,13 +62,11 @@
         </div>
         <div class="container mt-5">
             <h3>How to play:</h3>
-            <ol>
-                <li>Tebaklah maksud dari gambar di atas</li>
-                <li>Input jawaban pada input yang disediakan, kemudian submit.</li>
-                <li>Jika jawaban yang diinput benar, point +10.</li>
-                <li>Jika jawaban yang diinput salah, point -1.</li>
-                <li>Kamu dapat melihat point tertinggi pada menu Leaderboard</li>
-            </ol>
+            <p class="p-0 m-0">1. Tebaklah maksud dari gambar di atas</p>
+            <p class="p-0 m-0">2. Input jawaban pada input yang disediakan, kemudian submit.</p>
+            <p class="p-0 m-0">3. Jika jawaban yang diinput benar, point +10.</p>
+            <p class="p-0 m-0">4. Jika jawaban yang diinput salah, point -1.</p>
+            <p class="p-0 m-0">5. Kamu dapat melihat point tertinggi pada menu Leaderboard</p>
         </div>
     </div>
 </template>
@@ -195,6 +197,6 @@ table {
 }
 
 .posisi {
-    margin-right: 17vh;
+    margin-right: 15vh;
 }
 </style>
