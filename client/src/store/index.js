@@ -8,7 +8,8 @@ Vue.use(Vuex);
 export default new Vuex.Store({
     state: {
         image: '',
-        answer: ''
+        answer: '',
+        leaderData: []
     },
     mutations: {
         setAnswer(state, answer) {
@@ -16,6 +17,9 @@ export default new Vuex.Store({
         },
         setImage(state, image) {
             state.image = image;
+        },
+        setLeaderData(state, data) {
+            state.leaderData = data;
         }
     },
     actions: {
