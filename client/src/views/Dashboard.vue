@@ -34,7 +34,7 @@
 
 <script>
 import io from 'socket.io-client';
-const socket = io('http://localhost:3000');
+const socket = io('https://hacktivguessword.herokuapp.com');
 export default {
     name: 'Dashboard',
     data: () => {
