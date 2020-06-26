@@ -6,6 +6,8 @@ import store from './store';
 Vue.config.productionTip = false;
 
 import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.min.js'
+
 
 new Vue({
     router,
