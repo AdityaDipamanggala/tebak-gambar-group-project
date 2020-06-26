@@ -48,7 +48,7 @@ export default {
         }
     },
     created() {
-        let sound = new Audio('../assets/sound/correct.mp3')
+        let sound = new Audio('correct.mp3')
         this.point = parseInt(localStorage.point);
         socket.on('question', image => {
             this.$store.commit('setImage', image);
