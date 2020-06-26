@@ -1,18 +1,24 @@
 <template>
     <div class="container">
-        <form @submit.prevent="inputNick">
-            <div class="form-group">
-                <label for="nick">Please insert your nick name !</label>
-                <input
-                    type="text"
-                    class="form-control"
-                    id="nick"
-                    placeholder="Nickname"
-                    v-model="nick"
-                />
-            </div>
-            <button type="submit">Submit</button>
-        </form>
+        <div class="title">
+            <h2>Welcome to <strong>Guess The Word</strong> Game !</h2>
+        </div>
+        <img class="image" src="https://media0.giphy.com/media/SsIZQ5my0eba5y3r2m/giphy.gif" />
+        <div class="form">
+            <form @submit.prevent="inputNick">
+                <div class="form-group">
+                    <label for="formGroupExampleInput">Please insert your nick name !</label>
+                    <input
+                        type="text"
+                        class="form-control"
+                        id="formGroupExampleInput"
+                        placeholder="Your nick name"
+                        v-model="nick"
+                    />
+                </div>
+                <button type="submit" class="btn btn-primary">Submit</button>
+            </form>
+        </div>
     </div>
 </template>
 
@@ -36,4 +42,12 @@ export default {
 };
 </script>
 
-<style scoped></style>
+<style scoped>
+
+.image {
+    height: 150px;
+    width: 150px;
+    border-radius: 10px;
+}
+
+</style>
