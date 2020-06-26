@@ -1,9 +1,11 @@
 const express = require('express');
 const app = express();
+const cors = require('cors');
 const http = require('http').createServer(app);
 const io = require('socket.io')(http);
-
 const db = require('./data.json');
+
+app.use(cors());
 
 const getRandom = () => {
     return db[Math.floor(Math.random() * db.length)];
