@@ -196,4 +196,8 @@ form {
 .lebarin {
     width: 45%;
 }
+
+table {
+    width: 250px;
+}
 </style>
